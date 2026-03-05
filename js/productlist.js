@@ -2,20 +2,19 @@ const params = new URLSearchParams(window.location.search);
 const category = params.get("category");
 document.querySelector("#categoryTitle").textContent = category;
 
-let products = [];
 const container = document.querySelector(".products");
 const sortSelect = document.querySelector("#sortPrice");
-const hideSoldCheckbox = document.querySelector("#hideSoldOut");
+const hideSoldCheckbox = document.querySelector("#checkboxSold");
 
-// --- Hent produkter fra API ---
+let products = [];
+
 fetch(`https://kea-alt-del.dk/t7/api/products?category=${category}`)
   .then((res) => res.json())
   .then((data) => {
-    products = data; // gem alle produkter
-    displayProducts(products);
+    products = data;
+    updateProducts();
   });
 
-// --- Funktion til at vise produkter ---
 function displayProducts(list) {
   container.innerHTML = "";
   list.forEach((product) => {
@@ -35,22 +34,16 @@ function displayProducts(list) {
   });
 }
 
-// --- Event: Sortering ---
-sortSelect.addEventListener("change", () => {
-  let sorted = [...products];
-  if (sortSelect.value === "low") sorted.sort((a, b) => a.price - b.price);
-  if (sortSelect.value === "high") sorted.sort((a, b) => b.price - a.price);
-  // hvis checkbox er tjekket, filtrer udsolgte
-  if (hideSoldCheckbox.checked) sorted = sorted.filter((p) => !p.soldout);
-  displayProducts(sorted);
-});
+function updateProducts() {
+  let list = [...products];
 
-// --- Event: Filtrering udsolgte ---
-hideSoldCheckbox.addEventListener("change", () => {
-  let filtered = [...products];
-  if (hideSoldCheckbox.checked) filtered = filtered.filter((p) => !p.soldout);
-  // behold sortering hvis der er valgt
-  if (sortSelect.value === "low") filtered.sort((a, b) => a.price - b.price);
-  if (sortSelect.value === "high") filtered.sort((a, b) => b.price - a.price);
-  displayProducts(filtered);
-});
+  if (hideSoldCheckbox.checked) list = list.filter((p) => !p.soldout);
+
+  if (sortSelect.value === "low") list.sort((a, b) => a.price - b.price);
+  if (sortSelect.value === "high") list.sort((a, b) => b.price - a.price);
+
+  displayProducts(list);
+}
+
+sortSelect.addEventListener("change", updateProducts);
+hideSoldCheckbox.addEventListener("change", updateProducts);

@@ -1,4 +1,3 @@
-/* --- Generel styling --- */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f7f7f7;
@@ -13,7 +12,7 @@ header {
   border-bottom: 1px solid #eee;
 }
 header h1 {
-  font-weight: 400;
+  font-weight: 700;
   font-size: 22px;
   margin: 0;
 }
@@ -22,7 +21,6 @@ header h1 a {
   color: black;
 }
 
-/* --- Grid --- */
 main {
   max-width: 1200px;
   margin: auto;
@@ -37,13 +35,12 @@ h2 {
   gap: 30px;
 }
 .categories {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 .products {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
-/* --- Produktkort --- */
 .card {
   background: white;
   border: 1px solid #eee;
@@ -52,10 +49,12 @@ h2 {
   display: grid;
   grid-template-rows: subgrid;
   transition: 0.2s;
+  text-decoration: none;
+  color: black;
 }
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.08);
 }
 .card img {
   width: 100%;
@@ -63,10 +62,12 @@ h2 {
   object-fit: cover;
   margin-bottom: 10px;
 }
-.card a {
+.card a,
+.card a:visited {
+  color: black;
   text-decoration: none;
-  color: inherit;
 }
+
 .card h3 {
   font-size: 15px;
   margin-bottom: 5px;
@@ -80,7 +81,6 @@ h2 {
   margin-top: 5px;
 }
 
-/* --- SALE & SOLD OUT --- */
 .badge {
   position: absolute;
   top: 10px;
@@ -98,7 +98,6 @@ h2 {
   background: black;
 }
 
-/* --- Produktdetaljer --- */
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -114,28 +113,21 @@ h2 {
 .details h2 {
   margin-bottom: 10px;
 }
-.details .desc {
-  margin-top: 20px;
-  color: #555;
-}
 
-/* --- Kontrol container --- */
 #controls {
   display: flex;
-  justify-content: flex-end; /* flytter til højre */
+  justify-content: flex-end;
   align-items: center;
-  gap: 20px; /* mellemrum mellem dropdown og checkbox */
+  gap: 20px;
   margin-bottom: 20px;
 }
 
-/* Dropdown og label */
 #sortPrice {
   font-size: 15px;
   padding: 5px;
 }
 
-/* Checkbox label font og checkbox størrelse */
 #checkboxSold {
-  transform: scale(1.2); /* gør checkbox større */
+  transform: scale(1.2);
   cursor: pointer;
 }

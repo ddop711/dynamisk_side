@@ -11,7 +11,6 @@ fetch(`https://kea-alt-del.dk/t7/api/products/${id}`)
         <p class="brand">Brand: ${product.brandname}</p>
         <p class="price">Price: ${product.price} kr</p>
         <p>Color: ${product.basecolour}</p>
-        <p class="desc">${product.description}</p>
         <button class="button">Add to cart</button>
       </div>
     `;
