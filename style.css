@@ -1,0 +1,141 @@
+/* --- Generel styling --- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+header {
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+header h1 {
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0;
+}
+header h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+/* --- Grid --- */
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+}
+h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.grid {
+  display: grid;
+  gap: 30px;
+}
+.categories {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.products {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* --- Produktkort --- */
+.card {
+  background: white;
+  border: 1px solid #eee;
+  padding: 15px;
+  position: relative;
+  display: grid;
+  grid-template-rows: subgrid;
+  transition: 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.brand {
+  font-size: 13px;
+  color: #777;
+}
+.price {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* --- SALE & SOLD OUT --- */
+.badge {
+  position: absolute;
+  top: 10px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+.sale {
+  left: 10px;
+  background: #e63946;
+}
+.soldout {
+  right: 10px;
+  background: black;
+}
+
+/* --- Produktdetaljer --- */
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 40px;
+  background: white;
+  padding: 30px;
+  border: 1px solid #eee;
+}
+.details img {
+  width: 100%;
+}
+.details h2 {
+  margin-bottom: 10px;
+}
+.details .desc {
+  margin-top: 20px;
+  color: #555;
+}
+
+/* --- Kontrol container --- */
+#controls {
+  display: flex;
+  justify-content: flex-end; /* flytter til højre */
+  align-items: center;
+  gap: 20px; /* mellemrum mellem dropdown og checkbox */
+  margin-bottom: 20px;
+}
+
+/* Dropdown og label */
+#sortPrice {
+  font-size: 15px;
+  padding: 5px;
+}
+
+/* Checkbox label font og checkbox størrelse */
+#checkboxSold {
+  transform: scale(1.2); /* gør checkbox større */
+  cursor: pointer;
+}
